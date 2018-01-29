@@ -13,8 +13,8 @@ import (
 )
 
 var (
-	seed = flag.Int64("seed", 1, "random seed")
-	sep  = flag.String("sep", " ", "separator")
+	seed   = flag.Int64("seed", 1, "random seed")
+	sep    = flag.String("sep", " ", "separator")
 	length = flag.Int("length", 3, "name length")
 )
 
@@ -52,7 +52,7 @@ func main() {
 	case 2:
 		result = append(result, adj, noun)
 	default:
-		w := uint32(*length-2)
+		w := uint32(*length - 2)
 		for i := uint32(1); i <= w; i++ {
 			result = append(result, vs[(d+i)%v])
 		}
@@ -83,15 +83,15 @@ func someWords(mask Pos) []string {
 }
 
 func Nouns() []string {
-	return someWords(NN|NNS|NNP|NNPS)
+	return someWords(NN | NNS | NNP | NNPS)
 }
 
 func Adjectives() []string {
-	return someWords(JJ|JJR|JJS|VBG|VBN|VBD)
+	return someWords(JJ | JJR | JJS | VBG | VBN | VBD)
 }
 
 func Adverbs() []string {
-	return someWords(RB|RBR|RBS)
+	return someWords(RB | RBR | RBS)
 }
 
 type Pos uint64
